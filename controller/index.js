@@ -116,14 +116,14 @@ const deleteBorrowedBook = async (req, res) => {
   res.send(await client
     .db('BookDB')
     .collection('BorrowedBooks')
-    .deleteOne({_id: new ObjectId(req.params.id)})
+    .deleteOne({ _id: new ObjectId(req.params.id) })
   )
 }
 
 const tokenMaker = async (req, res) => {
   const token = jwt.sign(req.body, process.env.JWT_SECRET_KEY, {})
   console.log(req.body, token)
-  console.log('cookie', req.cookies)
+  console.log('cookie', req.cookies?.token)
   res
     .cookie('token', token, { secure: false, httpOnly: true })
     .send({ success: true })

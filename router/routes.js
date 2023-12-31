@@ -31,11 +31,11 @@ router.get('/books/:type', booksOfSameType)
 
 router.get('/books/:id/details', bookDetails)
 
-router.put('/books/:id/update', verifyToken, updateBook)
+router.patch('/books/:id/update', verifyToken, updateBook)
 
 router.post('/borrows', borrowingBook)
 
-router.put('/returnBook', updateBook)
+router.patch('/returnBook', updateBook)
 
 router.post('/addBook', verifyToken, addBook)
 
