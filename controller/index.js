@@ -125,12 +125,12 @@ const tokenMaker = async (req, res) => {
   console.log(req.body, token)
   console.log('cookie', req.cookies?.token)
   res
-    .cookie('token', token, { secure: false, httpOnly: true })
+    .cookie('token', token, { secure: true, httpOnly: true })
     .send({ success: true })
 }
 
 const logout = async (req, res) => {
-  res.clearCookie('token', { secure: false, httpOnly: true })
+  res.clearCookie('token', { secure: true, httpOnly: true })
   return res.send({message: 'Logged out successfully!'})
 }
 
