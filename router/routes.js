@@ -2,6 +2,7 @@ import { Router } from "express";
 import { verifyToken } from "../middleware/index.js";
 import {
     home,
+    logout,
     addBook,
     allBooks,
     tokenMaker,
@@ -42,5 +43,7 @@ router.post('/addBook', verifyToken, addBook)
 router.delete('/unBorrow/:id', deleteBorrowedBook)
 
 router.post('/jwt', tokenMaker)
+
+router.post('/logout', logout)
 
 export default router;

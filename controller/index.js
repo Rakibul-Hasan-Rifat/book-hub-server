@@ -129,8 +129,13 @@ const tokenMaker = async (req, res) => {
     .send({ success: true })
 }
 
+const logout = async (req, res) => {
+  res.clearCookie('token')
+}
+
 export {
   home,
+  logout,
   addBook,
   allBooks,
   updateBook,
