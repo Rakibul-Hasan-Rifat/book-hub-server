@@ -125,13 +125,23 @@ const tokenMaker = async (req, res) => {
   console.log(req.body, token)
   console.log('cookie', req.cookies?.token)
   res
-    .cookie('token', token, { secure: true, httpOnly: true })
+    .cookie('token', token, {
+      httpOnly: true,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
+    })
     .send({ success: true })
 }
 
 const logout = async (req, res) => {
-  res.clearCookie('token', { secure: true, httpOnly: true })
-  return res.send({message: 'Logged out successfully!'})
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
+  })
+  return res.send({ message: 'Logged out successfully!' })
 }
 
 export {
