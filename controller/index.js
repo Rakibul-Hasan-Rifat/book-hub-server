@@ -130,7 +130,8 @@ const tokenMaker = async (req, res) => {
 }
 
 const logout = async (req, res) => {
-  res.clearCookie('token')
+  res.clearCookie('token', { secure: false, httpOnly: true })
+  return res.send({message: 'Logged out successfully!'})
 }
 
 export {

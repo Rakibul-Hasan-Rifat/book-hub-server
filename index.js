@@ -14,9 +14,9 @@ app.use(cors({
     credentials: true,
     origin: ['http://localhost:5173', 'http://localhost:5174', 'https://book-hub-client-b46b2.web.app'],
 }));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(router);
 
 app.listen(port, async () => {
