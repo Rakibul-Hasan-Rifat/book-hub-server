@@ -23,7 +23,7 @@ app.listen(port, async () => {
     console.log(`app is running at http://localhost:${port}`);
 
     try {
-        await client.connect()
+        client.connect()
     } catch (error) {
         console.log(error)
     }
