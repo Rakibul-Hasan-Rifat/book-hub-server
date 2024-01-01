@@ -129,7 +129,7 @@ const tokenMaker = async (req, res) => {
       httpOnly: true,
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       secure: process.env.NODE_ENV === 'production',
-      domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
+      // domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
     })
     .send({ success: true })
 }
@@ -139,7 +139,7 @@ const logout = async (req, res) => {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     secure: process.env.NODE_ENV === 'production',
-    domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
+    // domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
   })
   return res.send({ message: 'Logged out successfully!' })
 }
